@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Restauria | Découvrez la carte et commandez{% endblock %}
+
+{% block meta_description %}Découvrez les menus, choisissez la commande à table ou à emporter et explorez le parcours client Restauria.{% endblock %}
+
+{% block body %}
+    <div class="cm cm-home">
+        <header class="cm-home-hero">
+            <div class="cm-wrap cm-home-hero__top">
+                <div>
+                    <span class="cm-kicker">Restauria · le plaisir de choisir</span>
+                    <h1>Le bon moment commence <em>à la carte.</em></h1>
+                </div>
+                <div class="cm-home-hero__aside">
+                    <p>Un plat qui donne envie. Une carte qu’on prend le temps de parcourir. Sur place ou à emporter, le plaisir de choisir commence ici.</p>
+                </div>
+            </div>
+            <div class="cm-home-hero__photo">
+                <img src="{{ asset('images/hero-bistro.jpg') }}" alt="L’atmosphère chaleureuse d’un bistrot et de sa salle" fetchpriority="high">
+                <span class="cm-photo-note">Installez-vous. On s’occupe du reste.</span>
+            </div>
+        </header>
+
+        <div class="cm-wrap cm-intro-strip">
+            <span class="cm-kicker">Bienvenue à table</span>
+            <p>La meilleure partie d’un repas ? Parfois, c’est ce moment où l’on ouvre la carte et où tout devient possible.</p>
+        </div>
+
+        <section class="cm-section cm-ways" aria-labelledby="cm-home-ways-title">
+            <div class="cm-wrap">
+                <div class="cm-section__head">
+                    <div>
+                        <span class="cm-kicker">Deux façons de profiter</span>
+                        <h2 id="cm-home-ways-title">À votre rythme.<br><em>À votre façon.</em></h2>
+                    </div>
+                </div>
+                <div class="cm-ways__grid">
+                    <article class="cm-way">
+                        <span class="cm-way__number">01 / Sur place</span>
+                        <h3>Prenez place, explorez.</h3>
+                        <p>Scannez le QR code de votre table, parcourez les plats et commandez sans attendre.</p>
+                    </article>
+                    <article class="cm-way">
+                        <span class="cm-way__number">02 / À emporter</span>
+                        <h3>Une envie, et c’est parti.</h3>
+                        <p>Composez un panier depuis la carte et suivez votre commande jusqu’à la confirmation.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="cm-quote" aria-label="Notre idée du repas">
+            <span class="cm-kicker cm-kicker--light">Une petite conviction</span>
+            <blockquote>On ne choisit pas seulement ce qu’on mange. On choisit le moment qui va avec.</blockquote>
+        </section>
+    </div>
+{% endblock %}
