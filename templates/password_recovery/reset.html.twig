@@ -1,0 +1,28 @@
+{% extends 'auth/layout.html.twig' %}
+
+{% set heading = audience.restaurant ? 'Réinitialiser · restaurateur' : (token is null ? 'Réinitialiser mon mot de passe' : 'Réinitialiser') %}
+
+{% block meta_description %}{{ heading }} — découvrez l’expérience Restauria pour piloter les opérations d’un restaurant.{% endblock %}
+
+{% block page_title %}{{ heading }}{% endblock %}
+
+{% block heading %}{{ heading }}{% endblock %}
+
+{% block lead %}Choisissez un nouveau mot de passe pour votre compte {{ audience.restaurant ? 'restaurateur' : 'client' }}.{% endblock %}
+
+{% block auth_body %}
+    {% if token is null or not valid_token %}
+        <div class="auth-info">
+            <p>Ce lien de réinitialisation est invalide ou a expiré. Veuillez en demander un nouveau.</p>
+            <a class="button button--primary" href="{{ path(audience.routeName('app_forgot_password')) }}">Demander un nouveau lien</a>
+        </div>
+    {% else %}
+        <form class="form-stack auth-form" method="post" action="{{ path(audience.routeName('app_reset_password_token'), {token: token}) }}">
+            {{ include('auth/_password_field.html.twig', {label: 'Nouveau mot de passe', autocomplete: 'new-password'}) }}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('reset-password') }}">
+            {{ include('auth/_demo_form_footer.html.twig', {submit_label: 'Modifier mon mot de passe', error: error}) }}
+        </form>
+    {% endif %}
+{% endblock %}
+
+{% block footer_links %}{{ include('auth/_back_to_login_link.html.twig') }}{% endblock %}

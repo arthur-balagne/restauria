@@ -5,8 +5,9 @@ for the general Symfony conventions; this file adds the Restauria-specific ones.
 
 ## Source of truth
 
-- User stories live in `backlog/project_backlog.md` (IDs `US-xxx`). Every feature
+- User stories live in `backlog/project_backlog.md` (IDs `TPL-xxx`). Every feature
   must be traceable to one of them.
+- The data model lives in `backlog/entities.md`; entities are created from it.
 - The HTML/CSS reference for every page lives in `restauria-html-template/`
   (one folder per route, shared CSS in `assets/`, images in `images/`). Twig
   templates must reproduce that markup and reuse its CSS classes; never invent a
@@ -21,7 +22,23 @@ for the general Symfony conventions; this file adds the Restauria-specific ones.
   `tests/Controller/` that requests the route, asserts a successful response and
   checks a meaningful selector (title, `h1`, form, etc.).
 - Tests live in `tests/` and mirror the `src/` namespace (`App\Tests\...`).
-- Run `php bin/phpunit`; the suite must be green before a task is considered done.
+- Tests run against the `restauria_test` MariaDB database. Prepare it once with
+  `make test-db` (migrations + fixtures in the `test` env); rerun it after adding a
+  migration or a fixture.
+- Run `php bin/phpunit` (`make test` in Docker); the suite must be green before a
+  task is considered done.
+
+## Conventions
+
+- Entities that need `createdAt`/`updatedAt` implement
+  `App\Entity\Behaviour\TimestampableInterface` and use `TimestampableTrait`;
+  `App\Doctrine\TimestampableListener` fills the values, never set them by hand.
+- Account pages exist for two audiences (`App\Auth\Audience`: customer and
+  restaurant). One controller action serves both through two `#[Route]` attributes
+  (`/x` and `/x/restaurant`, route names `app_x` and `app_x_restaurant`); templates
+  extend `auth/layout.html.twig` and reuse the `auth/_*.html.twig` partials.
+- Split Twig into partials (`_name.html.twig`) as soon as markup is shared or a
+  template grows beyond one screen.
 
 ## Code quality
 

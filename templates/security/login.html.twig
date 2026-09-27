@@ -1,0 +1,26 @@
+{% extends 'auth/layout.html.twig' %}
+
+{% block meta_description %}Connexion{{ audience.restaurant ? ' restaurateur' }} à votre espace Restauria.{% endblock %}
+
+{% block page_title %}Connexion{{ audience.restaurant ? ' restaurateur' }}{% endblock %}
+
+{% block heading %}Connexion{{ audience.restaurant ? ' restaurateur' }}{% endblock %}
+
+{% block lead %}{{ audience.restaurant ? 'Accédez à votre espace de gestion.' : 'Connectez-vous pour retrouver votre espace et vos commandes.' }}{% endblock %}
+
+{% block auth_body %}
+    <form class="form-stack auth-form" method="post" action="{{ path(audience.routeName('app_login')) }}">
+        <label class="form-field">
+            <span class="form-field__label">{{ audience.emailLabel }}</span>
+            <input type="email" name="email" value="{{ last_email }}" placeholder="Saisissez votre email..." class="form-control" autocomplete="email" required autofocus>
+        </label>
+        {{ include('auth/_password_field.html.twig') }}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        {{ include('auth/_demo_form_footer.html.twig', {submit_label: 'Se connecter', error: error ? error.messageKey|trans(error.messageData, 'security') : null}) }}
+    </form>
+{% endblock %}
+
+{% block footer_links %}
+    <p>Pas encore de compte ? <a href="{{ path(audience.routeName('app_register')) }}">Créer un compte</a></p>
+    <p><a href="{{ path(audience.routeName('app_forgot_password')) }}">Mot de passe oublié ?</a></p>
+{% endblock %}

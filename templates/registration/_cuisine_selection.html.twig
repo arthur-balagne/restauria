@@ -1,0 +1,13 @@
+<fieldset class="auth-cuisine-select" data-cuisine-selection>
+    <legend>Types de cuisine <small>(1 à {{ max_cuisines }} choix)</small></legend>
+    <p>Choisissez jusqu’à cinq cuisines qui décrivent votre carte.</p>
+    <div class="auth-cuisine-select__options">
+        {% for cuisine in cuisines %}
+            <label>
+                <input type="checkbox" name="cuisineIds" value="{{ cuisine.slug }}" data-registration-draft-target="cuisine">
+                <span>{{ cuisine.name }}</span>
+            </label>
+        {% endfor %}
+    </div>
+    <p role="alert" data-cuisine-error data-registration-draft-target="error"></p>
+</fieldset>

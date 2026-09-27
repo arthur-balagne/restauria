@@ -1,0 +1,16 @@
+{% extends 'auth/layout.html.twig' %}
+
+{% block meta_description %}{{ audience.restaurant ? 'Vérifier votre email · restaurateur — découvrez l’expérience Restauria pour piloter les opérations d’un restaurant.' : 'Veuillez vérifier votre email pour continuer.' }}{% endblock %}
+
+{% block page_title %}{{ audience.restaurant ? 'Vérifier votre email · restaurateur' : 'Vérification' }}{% endblock %}
+
+{% block heading %}{{ audience.restaurant ? 'Vérifier votre email · restaurateur' : 'Vérification' }}{% endblock %}
+
+{% block lead %}Confirmez votre adresse {{ audience.restaurant ? 'professionnelle' : 'email' }} pour continuer.{% endblock %}
+
+{% block auth_body %}
+    <div class="auth-info">
+        <p>Un email de vérification vous sera envoyé lorsque cette étape sera activée. Revenez à la connexion pour continuer.</p>
+        <a class="button button--primary" href="{{ path(audience.routeName('app_login')) }}">Retour à la connexion</a>
+    </div>
+{% endblock %}

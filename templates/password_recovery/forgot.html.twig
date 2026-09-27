@@ -1,0 +1,22 @@
+{% extends 'auth/layout.html.twig' %}
+
+{% block meta_description %}Mot de passe oublié{{ audience.restaurant ? ' · restaurateur' }} — découvrez l’expérience Restauria pour piloter les opérations d’un restaurant.{% endblock %}
+
+{% block page_title %}Mot de passe oublié{{ audience.restaurant ? ' · restaurateur' }}{% endblock %}
+
+{% block heading %}Mot de passe oublié{{ audience.restaurant ? ' · restaurateur' }}{% endblock %}
+
+{% block lead %}Retrouvez l’accès à votre espace {{ audience.restaurant ? 'restaurateur' : 'client' }}.{% endblock %}
+
+{% block auth_body %}
+    <form class="form-stack auth-form" method="post" action="{{ path(audience.routeName('app_forgot_password')) }}">
+        <label class="form-field">
+            <span class="form-field__label">{{ audience.emailLabel }}</span>
+            <input type="email" name="email" value="{{ email }}" placeholder="Saisissez votre email..." class="form-control" autocomplete="email" required autofocus>
+        </label>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('forgot-password') }}">
+        {{ include('auth/_demo_form_footer.html.twig', {submit_label: 'Demander un lien', error: error}) }}
+    </form>
+{% endblock %}
+
+{% block footer_links %}{{ include('auth/_back_to_login_link.html.twig') }}{% endblock %}

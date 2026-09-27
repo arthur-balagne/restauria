@@ -1,0 +1,4 @@
+<label class="form-field">
+    <span class="form-field__label">{{ label }}</span>
+    <input type="{{ type|default('text') }}" name="{{ name }}" placeholder="{{ placeholder|default('Saisissez ' ~ label|lower ~ '...') }}" class="form-control" autocomplete="{{ autocomplete }}"{% if maxlength is defined %} maxlength="{{ maxlength }}"{% endif %} required>
+</label>

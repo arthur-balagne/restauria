@@ -21,38 +21,44 @@
         {% endif %}
     </head>
     <body>
-        <a class="skip-link" href="#main-content">Aller au contenu principal</a>
-        <header class="marketing-header">
-            <div class="marketing-header__inner">
-                <a class="brand-mark" href="{{ path('app_home') }}" aria-label="Restauria, accueil">
-                    <span class="brand-mark__symbol" aria-hidden="true">R</span>
-                    <span class="brand-mark__name">Restauria</span>
-                </a>
-                <button class="marketing-menu-toggle" type="button" aria-label="Ouvrir la navigation" aria-expanded="false" data-public-menu-toggle>
-                    <span></span><span></span><span></span>
-                </button>
-                <nav class="marketing-nav" aria-label="Navigation principale">
-                    <a href="{{ path('app_home') }}" class="marketing-nav__link">Accueil</a>
-                </nav>
-            </div>
-        </header>
-        <main id="main-content">
-            {% block body %}{% endblock %}
-        </main>
-        <footer class="site-footer">
-            <div class="footer-inner">
-                <div class="footer-brand">
-                    <a class="brand-mark" href="{{ path('app_home') }}" aria-label="Restauria, accueil">
-                        <span class="brand-mark__symbol brand-mark__symbol--inverted" aria-hidden="true">R</span>
-                        <span class="brand-mark__name brand-mark__name--inverted">Restauria</span>
-                    </a>
-                    <p>Explorez la carte, choisissez votre façon de commander et savourez le moment.</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span>© Restauria.</span>
-                <span>Une expérience pensée pour le plaisir de la table.</span>
-            </div>
-        </footer>
+        {% block content %}
+            <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+            {% block header %}
+                <header class="marketing-header">
+                    <div class="marketing-header__inner">
+                        <a class="brand-mark" href="{{ path('app_home') }}" aria-label="Restauria, accueil">
+                            <span class="brand-mark__symbol" aria-hidden="true">R</span>
+                            <span class="brand-mark__name">Restauria</span>
+                        </a>
+                        <button class="marketing-menu-toggle" type="button" aria-label="Ouvrir la navigation" aria-expanded="false" data-public-menu-toggle>
+                            <span></span><span></span><span></span>
+                        </button>
+                        <nav class="marketing-nav" aria-label="Navigation principale">
+                            <a href="{{ path('app_home') }}" class="marketing-nav__link">Accueil</a>
+                        </nav>
+                    </div>
+                </header>
+            {% endblock %}
+            <main id="main-content">
+                {% block body %}{% endblock %}
+            </main>
+            {% block footer %}
+                <footer class="site-footer">
+                    <div class="footer-inner">
+                        <div class="footer-brand">
+                            <a class="brand-mark" href="{{ path('app_home') }}" aria-label="Restauria, accueil">
+                                <span class="brand-mark__symbol brand-mark__symbol--inverted" aria-hidden="true">R</span>
+                                <span class="brand-mark__name brand-mark__name--inverted">Restauria</span>
+                            </a>
+                            <p>Explorez la carte, choisissez votre façon de commander et savourez le moment.</p>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <span>© Restauria.</span>
+                        <span>Une expérience pensée pour le plaisir de la table.</span>
+                    </div>
+                </footer>
+            {% endblock %}
+        {% endblock %}
     </body>
 </html>
