@@ -19,5 +19,26 @@ services:
     App\:
         resource: '../src/'
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    app.menu.customer:
+        class: Knp\Menu\MenuItem
+        factory: ['@App\Menu\MenuBuilder', createCustomerMenu]
+        tags:
+            - { name: knp_menu.menu, alias: customer }
+
+    app.menu.restaurant:
+        class: Knp\Menu\MenuItem
+        factory: ['@App\Menu\MenuBuilder', createRestaurantMenu]
+        tags:
+            - { name: knp_menu.menu, alias: restaurant }
+
+    app.menu.customer_actions:
+        class: Knp\Menu\MenuItem
+        factory: ['@App\Menu\MenuBuilder', createCustomerActions]
+        tags:
+            - { name: knp_menu.menu, alias: customer_actions }
+
+    app.menu.restaurant_actions:
+        class: Knp\Menu\MenuItem
+        factory: ['@App\Menu\MenuBuilder', createRestaurantActions]
+        tags:
+            - { name: knp_menu.menu, alias: restaurant_actions }

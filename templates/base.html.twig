@@ -33,9 +33,17 @@
                         <button class="marketing-menu-toggle" type="button" aria-label="Ouvrir la navigation" aria-expanded="false" data-public-menu-toggle>
                             <span></span><span></span><span></span>
                         </button>
+                        {% set _is_restaurant = app.request and 'restaurant' in app.request.attributes.get('_route', '') %}
                         <nav class="marketing-nav" aria-label="Navigation principale">
-                            <a href="{{ path('app_home') }}" class="marketing-nav__link">Accueil</a>
+                            {% block navigation_menu %}
+                                {{ include('menu/_marketing_nav.html.twig', { menu: knp_menu_get(_is_restaurant ? 'restaurant' : 'customer') }) }}
+                            {% endblock %}
                         </nav>
+                        {% block marketing_actions %}
+                            <div class="marketing-actions">
+                                {{ include('menu/_marketing_nav.html.twig', { menu: knp_menu_get(_is_restaurant ? 'restaurant_actions' : 'customer_actions') }) }}
+                            </div>
+                        {% endblock %}
                     </div>
                 </header>
             {% endblock %}

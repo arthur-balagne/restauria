@@ -9,7 +9,7 @@
 {% block lead %}Créez votre espace pour piloter votre restaurant.{% endblock %}
 
 {% block auth_body %}
-    <form class="form-stack auth-form" method="post" action="{{ path('app_register_restaurant') }}" data-controller="registration-draft" data-registration-draft-max-cuisines-value="{{ max_cuisines }}">
+    <form class="form-stack auth-form" method="post" action="{{ path('app_register_restaurant') }}" data-controller="registration-draft">
         <label class="form-field">
             <span class="form-field__label">Nom du restaurant</span>
             <input type="text" name="name" value="{{ form_data.name }}" placeholder="Saisissez nom du restaurant..." class="form-control" autocomplete="organization" required>

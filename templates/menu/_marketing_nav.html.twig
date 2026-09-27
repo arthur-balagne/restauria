@@ -1,0 +1,5 @@
+{% for item in menu.children %}
+    <a href="{{ item.uri }}"{% for name, value in item.linkAttributes %} {{ name }}="{{ value }}"{% endfor %}>
+        {{ item.label }}
+    </a>
+{% endfor %}

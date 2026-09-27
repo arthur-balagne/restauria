@@ -1,4 +1,4 @@
-<label class="form-field">
+<label class="form-field{{ invalid|default(false) ? ' form-field--invalid' }}">
     <span class="form-field__label">{{ label }}</span>
-    <input type="{{ type|default('text') }}" name="{{ name }}" placeholder="{{ placeholder|default('Saisissez ' ~ label|lower ~ '...') }}" class="form-control" autocomplete="{{ autocomplete }}"{% if maxlength is defined %} maxlength="{{ maxlength }}"{% endif %} required>
+    <input type="{{ type|default('text') }}" name="{{ name }}" placeholder="{{ placeholder|default('Saisissez ' ~ label|lower ~ '...') }}" class="form-control" autocomplete="{{ autocomplete }}"{% if maxlength is defined %} maxlength="{{ maxlength }}"{% endif %}{{ invalid|default(false) ? ' aria-invalid="true"' }} required>
 </label>

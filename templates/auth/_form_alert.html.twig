@@ -1,0 +1,9 @@
+<div class="form-alert form-alert--{{ variant|default('info') }}" role="alert">
+    <div class="form-alert__icon" aria-hidden="true">
+        {% if variant|default('info') == 'error' %}!{% else %}i{% endif %}
+    </div>
+    <div class="form-alert__body">
+        {% if title is defined and title %}<p class="form-alert__title">{{ title }}</p>{% endif %}
+        <p class="form-alert__message">{{ message }}</p>
+    </div>
+</div>

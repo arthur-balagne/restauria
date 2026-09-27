@@ -59,6 +59,9 @@
             ".php-cs-fixer.dist.php"
         ]
     },
+    "knplabs/knp-menu-bundle": {
+        "version": "v3.7.0"
+    },
     "phpstan/phpstan": {
         "version": "2.2.16"
     },
