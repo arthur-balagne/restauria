@@ -8,3 +8,56 @@
 .brand-mark__name--inverted {
   color: #fff;
 }
+
+.form-alert {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 0.9rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  margin-bottom: 1rem;
+}
+
+.form-alert--error {
+  background: #fdecea;
+  border-color: #f5c2c0;
+  color: #8a1f1a;
+}
+
+.form-alert__icon {
+  flex: 0 0 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: currentColor;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.form-alert--error .form-alert__icon {
+  background: #c0392b;
+}
+
+.form-alert__body {
+  flex: 1;
+}
+
+.form-alert__title {
+  margin: 0 0 0.15rem;
+  font-weight: 600;
+}
+
+.form-alert__message {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.form-field--invalid .form-control {
+  border-color: #c0392b;
+  box-shadow: 0 0 0 2px rgba(192, 57, 43, 0.15);
+}

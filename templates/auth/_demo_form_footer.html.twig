@@ -1,3 +1,4 @@
+{% if error is defined and error %}
+    {{ include('auth/_form_alert.html.twig', {variant: 'error', title: 'Une erreur est survenue', message: error}) }}
+{% endif %}
 <button type="submit" class="button button--primary form-submit">{{ submit_label }}</button>
-{% if error is defined and error %}<p class="auth-error" role="alert">{{ error }}</p>{% endif %}
-<p role="status" aria-live="polite" data-auth-status data-auth-demo-form-target="status"></p>

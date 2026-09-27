@@ -51,7 +51,7 @@ final class RegistrationControllerTest extends WebTestCase
         ]);
 
         self::assertResponseIsSuccessful();
-        self::assertSelectorTextContains('.auth-error', 'existe déjà');
+        self::assertSelectorTextContains('.form-alert--error', 'existe déjà');
     }
 
     private function csrfToken(KernelBrowser $client, string $path): string
@@ -85,8 +85,7 @@ final class RegistrationControllerTest extends WebTestCase
 
         self::assertResponseIsSuccessful();
         self::assertSelectorTextContains('fieldset.auth-cuisine-select legend', '1 à 5 choix');
-        self::assertSelectorExists('fieldset.auth-cuisine-select p[role="alert"][data-cuisine-error]');
-        self::assertSame('5', $crawler->filter('form[data-controller="registration-draft"]')->attr('data-registration-draft-max-cuisines-value'));
+        self::assertSelectorExists('form[data-controller="registration-draft"]');
 
         $checkboxes = $crawler->filter('input[type="checkbox"][name="cuisineIds"]');
         self::assertCount(6, $checkboxes);

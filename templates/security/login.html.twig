@@ -9,14 +9,15 @@
 {% block lead %}{{ audience.restaurant ? 'Accédez à votre espace de gestion.' : 'Connectez-vous pour retrouver votre espace et vos commandes.' }}{% endblock %}
 
 {% block auth_body %}
+    {% set error_message = error ? 'Email ou mot de passe incorrect. Vérifiez vos identifiants et réessayez.' : null %}
     <form class="form-stack auth-form" method="post" action="{{ path(audience.routeName('app_login')) }}">
-        <label class="form-field">
+        <label class="form-field{{ error_message ? ' form-field--invalid' }}">
             <span class="form-field__label">{{ audience.emailLabel }}</span>
-            <input type="email" name="email" value="{{ last_email }}" placeholder="Saisissez votre email..." class="form-control" autocomplete="email" required autofocus>
+            <input type="email" name="email" value="{{ last_email }}" placeholder="Saisissez votre email..." class="form-control" autocomplete="email" required autofocus{{ error_message ? ' aria-invalid="true"' }}>
         </label>
-        {{ include('auth/_password_field.html.twig') }}
+        {{ include('auth/_password_field.html.twig', {invalid: error_message is not null}) }}
         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-        {{ include('auth/_demo_form_footer.html.twig', {submit_label: 'Se connecter', error: error ? error.messageKey|trans(error.messageData, 'security') : null}) }}
+        {{ include('auth/_demo_form_footer.html.twig', {submit_label: 'Se connecter', error: error_message}) }}
     </form>
 {% endblock %}
 

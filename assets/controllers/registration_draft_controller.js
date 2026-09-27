@@ -1,35 +1,18 @@
-import AuthDemoFormController from './auth_demo_form_controller.js';
+import { Controller } from '@hotwired/stimulus';
 
 const STORAGE_KEY = 'restauria.registrationDraft';
 
-export default class extends AuthDemoFormController {
-    static targets = ['status', 'cuisine', 'error'];
-    static values = { maxCuisines: { type: Number, default: 5 } };
+export default class extends Controller {
+    static targets = ['cuisine'];
 
     connect() {
         this.restore();
-        this.element.addEventListener('submit', (event) => this.onSubmit(event));
+        this.element.addEventListener('submit', () => this.persist());
     }
 
-    onSubmit(event) {
-        this.errorTarget.textContent = '';
-
-        const cuisineIds = this.selectedCuisineIds();
-        if (cuisineIds.length < 1 || cuisineIds.length > this.maxCuisinesValue) {
-            event.preventDefault();
-            this.errorTarget.textContent = `Choisissez entre 1 et ${this.maxCuisinesValue} cuisines.`;
-
-            return;
-        }
-
-        const address = this.addressInput().value.trim();
-        if ('' === address) {
-            event.preventDefault();
-            this.errorTarget.textContent = 'L’adresse est obligatoire.';
-
-            return;
-        }
-
+    persist() {
+        const address = this.addressInput()?.value.trim() ?? '';
+        const cuisineIds = this.cuisineTargets.filter((c) => c.checked).map((c) => c.value);
         window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ address, cuisineIds }));
     }
 
@@ -41,7 +24,10 @@ export default class extends AuthDemoFormController {
 
         try {
             const draft = JSON.parse(raw);
-            this.addressInput().value = draft.address ?? '';
+            const address = this.addressInput();
+            if (address) {
+                address.value = draft.address ?? '';
+            }
             const cuisineIds = new Set(draft.cuisineIds ?? []);
             this.cuisineTargets.forEach((checkbox) => {
                 checkbox.checked = cuisineIds.has(checkbox.value);
@@ -49,10 +35,6 @@ export default class extends AuthDemoFormController {
         } catch {
             window.localStorage.removeItem(STORAGE_KEY);
         }
-    }
-
-    selectedCuisineIds() {
-        return this.cuisineTargets.filter((checkbox) => checkbox.checked).map((checkbox) => checkbox.value);
     }
 
     addressInput() {

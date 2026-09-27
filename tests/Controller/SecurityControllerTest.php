@@ -62,6 +62,7 @@ final class SecurityControllerTest extends WebTestCase
         ]);
 
         self::assertResponseIsSuccessful();
-        self::assertSelectorExists('.auth-error');
+        self::assertSelectorExists('.form-alert--error');
+        self::assertSelectorTextContains('.form-alert--error', 'incorrect');
     }
 }
