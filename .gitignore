@@ -3,6 +3,10 @@
 /.env.local
 /.env.local.php
 /.env.*.local
+/.env.prod
+/.env.prod.local
+/.env.production
+/.env.production.local
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
 /var/
@@ -18,3 +22,15 @@
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
+
+###> IDE & Editors ###
+/.idea/
+/.project
+/.buildpath
+/.settings/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+###< IDE & Editors ###
