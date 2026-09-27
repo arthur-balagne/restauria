@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Filtrez les restaurants de démonstration par département et par type de cuisine, puis découvrez leur carte.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Restaurants à découvrir | Restauria">
+  <meta property="og:description" content="Filtrez les restaurants de démonstration par département et par type de cuisine, puis découvrez leur carte.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Restaurants à découvrir | Restauria">
+  <meta name="twitter:description" content="Filtrez les restaurants de démonstration par département et par type de cuisine, puis découvrez leur carte.">
+  <link rel="canonical" href="/restaurants">
+  <title>Restaurants à découvrir | Restauria</title>
+  <link rel="stylesheet" href="/assets/main-DuY2fJRR.css">
+</head>
+<body>
+
+    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+    <!-- Public site landmark: brand, primary navigation and account actions. -->
+    <header class="marketing-header">
+      <div class="marketing-header__inner">
+        <a class="brand-mark" href="/" aria-label="Restauria, accueil">
+          <span class="brand-mark__symbol" aria-hidden="true">R</span>
+          <span class="brand-mark__name">Restauria</span>
+        </a>
+        <button class="marketing-menu-toggle" type="button" aria-label="Ouvrir la navigation" aria-expanded="false" data-public-menu-toggle>
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="marketing-nav" aria-label="Navigation principale">
+          <a href="/restaurants" class="marketing-nav__link">Restaurants</a>
+          <a href="/features" class="marketing-nav__link">Découvrir</a>
+          <a href="/pricing" class="marketing-nav__link">Coût côté client</a>
+          <a href="/contact" class="marketing-nav__link">Contact</a>
+          <a href="/restaurant" class="marketing-nav__link marketing-nav__audience">Je suis restaurateur</a>
+        </nav>
+        <div class="marketing-actions">
+          <a href="/login" class="button button--quiet button--small">Connexion</a>
+          <a href="/register" class="button button--primary button--small">Compte client</a>
+        </div>
+      </div>
+    </header>
+    <!-- Each route provides one primary content landmark. -->
+    <main id="main-content">
+
+    <div class="rd">
+      <header class="rd-hero">
+        <div class="rd-wrap rd-hero__layout">
+          <div>
+            <span class="rd-kicker">Restauria · Les cartes de démonstration</span>
+            <h1>Il y a toujours une carte <em>à découvrir.</em></h1>
+          </div>
+          <div class="rd-hero__aside">
+            <p>Quatre univers pour explorer Restauria à votre rythme. Choisissez une cuisine, ouvrez une carte et laissez-vous inspirer.</p>
+            <span class="rd-hero__index">01 — 04 / Démonstration uniquement</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="rd-directory" aria-labelledby="rd-directory-title">
+        <div class="rd-wrap">
+          <div class="rd-directory__intro">
+            <div>
+              <span class="rd-kicker">À parcourir</span>
+              <h2 id="rd-directory-title">Trouvez votre <em>envie du moment.</em></h2>
+            </div>
+            <p>De Lyon à Paris, parcourez quatre exemples de restaurants. Ce répertoire présente des démonstrations, et non des établissements à réserver ou à commander.</p>
+          </div>
+
+          <form class="rd-filters" data-restaurant-filters action="/restaurants" method="get" aria-label="Filtrer les restaurants de démonstration">
+            <div class="rd-filters__field">
+              <label for="rd-department">Département</label>
+              <select id="rd-department" name="department">
+                <option value="all" selected>Tous les départements</option>
+                <option value="69">69 Rhône</option>
+                <option value="75">75 Paris</option>
+              </select>
+            </div>
+            <div class="rd-filters__field">
+              <label for="rd-cuisine">Cuisine</label>
+              <select id="rd-cuisine" name="cuisine">
+                <option value="all" selected>Toutes les cuisines</option>
+                <option value="francaise">française</option><option value="italienne">italienne</option><option value="fusion">fusion</option><option value="gastronomique">gastronomique</option><option value="cafe-patisserie">café &amp; pâtisserie</option><option value="asiatique">asiatique</option>
+              </select>
+            </div>
+            <button class="rd-filters__submit" type="submit">Afficher les cartes <span aria-hidden="true">↗</span></button>
+          </form>
+
+          <div data-directory-results>
+
+    <div class="rd-results__head">
+      <p class="rd-results__count" role="status" aria-live="polite">4 restaurants de démonstration</p>
+      <span class="rd-results__note">Cartes à explorer, sans commande réelle</span>
+    </div>
+    <div class="rd-grid rd-grid--4">
+    <article class="rd-card">
+      <a class="rd-card__link" href="/demo-restau?profile=group" aria-label="Voir la carte de démonstration de Le Petit Bouchon">
+        <div class="rd-card__image">
+          <img src="/images/hero-bistro.jpg" alt="Salle de bistrot chaleureuse, image d’illustration" loading="lazy">
+          <span class="rd-card__demo">Démonstration</span>
+        </div>
+        <div class="rd-card__body">
+          <p class="rd-card__meta">Lyon · 69 · française</p>
+          <h3>Le Petit Bouchon</h3>
+          <p class="rd-card__description">Une cuisine de saison généreuse, à découvrir dans la carte de démonstration.</p>
+          <span class="rd-card__cta">Voir la carte de démonstration <span class="rd-card__arrow" aria-hidden="true">↗</span></span>
+        </div>
+      </a>
+    </article>
+    <article class="rd-card">
+      <a class="rd-card__link" href="/demo-restau?profile=large" aria-label="Voir la carte de démonstration de Bella Napoli">
+        <div class="rd-card__image">
+          <img src="/images/pizza-nomade-diavola.jpg" alt="Pizza garnie, image d’illustration" loading="lazy">
+          <span class="rd-card__demo">Démonstration</span>
+        </div>
+        <div class="rd-card__body">
+          <p class="rd-card__meta">Lyon · 69 · italienne</p>
+          <h3>Bella Napoli</h3>
+          <p class="rd-card__description">L’esprit de la pizza napolitaine à parcourir, plat après plat, dans cet exemple de carte.</p>
+          <span class="rd-card__cta">Voir la carte de démonstration <span class="rd-card__arrow" aria-hidden="true">↗</span></span>
+        </div>
+      </a>
+    </article>
+    <article class="rd-card">
+      <a class="rd-card__link" href="/demo-restau?profile=small" aria-label="Voir la carte de démonstration de Café Marais">
+        <div class="rd-card__image">
+          <img src="/images/menu-pavlova.jpg" alt="Dessert dressé dans une assiette, image d’illustration" loading="lazy">
+          <span class="rd-card__demo">Démonstration</span>
+        </div>
+        <div class="rd-card__body">
+          <p class="rd-card__meta">Paris · 75 · café &amp; pâtisserie</p>
+          <h3>Café Marais</h3>
+          <p class="rd-card__description">Une parenthèse café et pâtisseries maison, présentée dans une carte d’essai.</p>
+          <span class="rd-card__cta">Voir la carte de démonstration <span class="rd-card__arrow" aria-hidden="true">↗</span></span>
+        </div>
+      </a>
+    </article>
+    <article class="rd-card">
+      <a class="rd-card__link" href="/demo-restau?profile=takeaway" aria-label="Voir la carte de démonstration de Pizza Nomade">
+        <div class="rd-card__image">
+          <img src="/images/pizza-nomade-hero.jpg" alt="Pizza présentée sur une table, image d’illustration" loading="lazy">
+          <span class="rd-card__demo">Démonstration</span>
+        </div>
+        <div class="rd-card__body">
+          <p class="rd-card__meta">Lyon · 69 · italienne</p>
+          <h3>Pizza Nomade</h3>
+          <p class="rd-card__description">Un exemple de carte de pizza truck, imaginé pour explorer le parcours à emporter.</p>
+          <span class="rd-card__cta">Voir la carte de démonstration <span class="rd-card__arrow" aria-hidden="true">↗</span></span>
+        </div>
+      </a>
+    </article></div>
+          </div>
+          <p class="rd-footnote"><strong>Ces restaurants sont des démonstrations.</strong> Les cartes et les images illustrent l’expérience Restauria. Aucun établissement n’est ouvert à la réservation ou à la commande depuis cette page ; aucun paiement ni envoi en cuisine n’est effectué.</p>
+        </div>
+      </section>
+    </div>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a class="brand-mark" href="/" aria-label="Restauria, accueil">
+            <span class="brand-mark__symbol" aria-hidden="true" style="background: #fff; color: var(--color-forest);">R</span>
+            <span class="brand-mark__name" style="color: #fff;">Restauria</span>
+          </a>
+          <p>Explorez la carte, choisissez votre façon de commander et savourez le moment.</p>
+        </div>
+        <div class="footer-nav">
+          <div class="footer-col">
+            <h4>Produit</h4>
+            <a href="/restaurants">Restaurants</a>
+            <a href="/features">Découvrir</a>
+            <a href="/pricing">Coût côté client</a>
+            <a href="/restaurant">Espace restaurateur</a>
+            <a href="/pages">Route Directory</a>
+            <a href="/design-docs">Documentation design</a>
+          </div>
+          <div class="footer-col">
+            <h4>Support</h4>
+            <a href="/contact">Contact</a>
+            <a href="/terms">Conditions (client)</a>
+            <a href="/privacy">Confidentialité (client)</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© Restauria.</span>
+        <span>Une expérience pensée pour le plaisir de la table.</span>
+      </div>
+    </footer>
+
+<!-- Shared client script keeps navigation and cart controls interactive. -->
+<script type="module" src="/assets/main-D90o_S-p.js"></script>
+</body>
+</html>

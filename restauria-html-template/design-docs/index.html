@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Composants réutilisables Restauria, exemples de code et conseils pour créer de nouvelles pages.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Documentation design | Restauria">
+  <meta property="og:description" content="Composants réutilisables Restauria, exemples de code et conseils pour créer de nouvelles pages.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Documentation design | Restauria">
+  <meta name="twitter:description" content="Composants réutilisables Restauria, exemples de code et conseils pour créer de nouvelles pages.">
+  <link rel="canonical" href="/design-docs">
+  <title>Documentation design | Restauria</title>
+  <link rel="stylesheet" href="/assets/main-DuY2fJRR.css">
+</head>
+<body>
+
+    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+    <!-- Public site landmark: brand, primary navigation and account actions. -->
+    <header class="marketing-header">
+      <div class="marketing-header__inner">
+        <a class="brand-mark" href="/" aria-label="Restauria, accueil">
+          <span class="brand-mark__symbol" aria-hidden="true">R</span>
+          <span class="brand-mark__name">Restauria</span>
+        </a>
+        <button class="marketing-menu-toggle" type="button" aria-label="Ouvrir la navigation" aria-expanded="false" data-public-menu-toggle>
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="marketing-nav" aria-label="Navigation principale">
+          <a href="/restaurants" class="marketing-nav__link">Restaurants</a>
+          <a href="/features" class="marketing-nav__link">Découvrir</a>
+          <a href="/pricing" class="marketing-nav__link">Coût côté client</a>
+          <a href="/contact" class="marketing-nav__link">Contact</a>
+          <a href="/restaurant" class="marketing-nav__link marketing-nav__audience">Je suis restaurateur</a>
+        </nav>
+        <div class="marketing-actions">
+          <a href="/login" class="button button--quiet button--small">Connexion</a>
+          <a href="/register" class="button button--primary button--small">Compte client</a>
+        </div>
+      </div>
+    </header>
+    <!-- Each route provides one primary content landmark. -->
+    <main id="main-content">
+
+    <div class="design-docs">
+      <div class="dd-hero">
+        <div class="dd-hero__top"><span class="dd-overline">Restauria / Référence interne</span><span class="dd-edition">Édition 01 — Interface vivante</span></div>
+        <div class="dd-hero__content"><div><p class="dd-hero__kicker"><span></span> Le guide de construction</p><h1>Des pages qui parlent<br><em>la même langue.</em></h1><p class="dd-hero__lead">Une référence pour fabriquer la prochaine page Restauria avec les pièces déjà en place : styles réels, balisage utile et chemin de rendu.</p><div class="dd-hero__links"><a class="button button--primary" href="#components">Explorer les composants <span aria-hidden="true">↗</span></a><a class="dd-text-link" href="#recipe">Composer une page <span aria-hidden="true">↘</span></a></div></div><div class="dd-hero__stamp" aria-hidden="true"><span>R</span><small>Design<br>system<br>notes</small></div></div>
+        <div class="dd-hero__foot"><span>01 / Fondations</span><span>02 / Composants</span><span>03 / Recette</span></div>
+      </div>
+
+      <div class="dd-layout">
+        <nav class="dd-toc" aria-label="Sommaire de la documentation">
+          <div class="dd-toc__inner"><span class="dd-toc__title">Dans ce guide</span>
+            <a href="#foundations">01 <span>Fondations</span></a>
+            <a href="#components">02 <span>Composants</span></a>
+            <div class="dd-toc__sub"><a href="#buttons">Boutons</a><a href="#badges">Badges</a><a href="#forms">Formulaires</a><a href="#cards">Cartes</a><a href="#headers">En-têtes</a><a href="#avatars">Avatars</a><a href="#tables">Tableaux</a><a href="#catalog">Catalogue</a><a href="#customer">Client</a></div>
+            <a href="#recipe">03 <span>Nouvelle page</span></a>
+            <a href="#principles">04 <span>Garde-fous</span></a>
+          </div>
+        </nav>
+        <div class="dd-content">
+          <section class="dd-section" id="foundations" aria-labelledby="foundations-title">
+            <div class="dd-section__intro"><span class="dd-index">01 / Les fondations</span><h2 id="foundations-title">La matière première.</h2><p>Avant de créer une nouvelle classe, cherchez ce qui existe déjà. La couleur, le rythme et la typographie vivent dans les variables CSS et les styles de base.</p></div>
+            <div class="dd-foundations">
+              <div class="dd-foundation dd-foundation--colors"><div class="dd-foundation__header"><h3>Palette</h3><code>src/styles/tokens.css + base.css</code></div><p>Encre pour la structure, toile chaude pour respirer, corail pour le geste, sauge pour les états paisibles. <strong>base.css redéfinit plusieurs tokens de tokens.css</strong> ; consultez les valeurs calculées avant de coder.</p><div class="dd-swatches"><div><i style="background:var(--color-ink)"></i><span>Encre</span><code>--color-ink</code></div><div><i style="background:var(--color-canvas)"></i><span>Toile</span><code>--color-canvas</code></div><div><i style="background:var(--color-sage)"></i><span>Sauge</span><code>--color-sage</code></div><div><i style="background:var(--color-coral)"></i><span>Corail</span><code>--color-coral</code></div><div><i style="background:var(--color-line)"></i><span>Trait</span><code>--color-line</code></div></div><div class="dd-code"><div class="dd-code__top"><span>css</span><button type="button" class="dd-code__copy" data-doc-copy aria-label="Copier le code css">Copier le code</button></div><pre><code>.new-panel {
+  color: var(--color-ink);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+}</code></pre></div></div>
+              <div class="dd-foundation dd-foundation--type"><div class="dd-foundation__header"><h3>Typographie</h3><code>src/styles/base.css</code></div><div class="dd-type-sample"><span class="dd-overline">TITRE / --font-display</span><strong>Le plaisir de bien recevoir.</strong><span class="dd-type-body">Le texte courant privilégie la clarté, avec une cadence simple et des informations faciles à parcourir.</span></div><p>Les titres héritent de <code>--font-display</code> et le corps de <code>--font-body</code>. Les valeurs actives dans <code>base.css</code> sont Fraunces et Plus Jakarta Sans. Respectez h1 → h2 → h3, sans sauter de niveau pour obtenir une taille.</p></div>
+              <div class="dd-foundation dd-foundation--space"><div class="dd-foundation__header"><h3>Espacement & forme</h3><code>src/styles/tokens.css + base.css</code></div><div class="dd-space-sample"><span style="width:24%"></span><span style="width:42%"></span><span style="width:70%"></span><span style="width:100%"></span></div><p>Préférez un rythme progressif à une grille rigide : .5rem entre éléments liés, 1–1.5rem dans une carte, 2–3rem entre sections. Les rayons <code>--radius-sm</code>, <code>--radius-md</code>, <code>--radius-lg</code> et <code>--shadow-soft</code> assurent une famille de surfaces cohérente.</p></div>
+            </div>
+          </section>
+
+          <section class="dd-section" id="components" aria-labelledby="components-title">
+            <div class="dd-section__intro"><span class="dd-index">02 / La bibliothèque active</span><h2 id="components-title">Des pièces, pas des maquettes.</h2><p>Ces aperçus utilisent les classes présentes dans le projet. Ouvrez chaque exemple pour consulter le balisage HTML échappé et prêt à sélectionner. Les aperçus ne simulent aucune écriture de données.</p></div>
+            <div class="dd-examples">
+  <article class="dd-example" id="buttons" aria-labelledby="buttons-title">
+    <div class="dd-example__head"><span class="dd-example__number">01 / Action</span><h3 id="buttons-title">Boutons & actions</h3><p>Une action principale par zone, puis des actions secondaires plus discrètes. Utilisez un lien pour naviguer et un bouton seulement pour exécuter une action.</p></div>
+    <div class="dd-example__body">
+      <div class="dd-stage"><span class="dd-stage__label">Aperçu réel</span><div class="dd-stage__inner"><div class="dd-preview-row"><a class="button button--primary" href="#recipe">Voir la recette</a><a class="button button--quiet" href="#foundations">Fondations</a><a class="button button--coral button--small" href="#forms">Voir les champs</a></div></div></div>
+      <div class="dd-example__aside"><div class="dd-use"><strong>Quand l’utiliser</strong><p>La variante small convient aux barres d’outils. Branchez les vrais boutons à un gestionnaire dans main.js ; une classe CSS ne déclenche rien.</p></div><details class="dd-snippet"><summary>Voir le HTML <span aria-hidden="true">↗</span></summary><div class="dd-code"><div class="dd-code__top"><span>html</span><button type="button" class="dd-code__copy" data-doc-copy aria-label="Copier le code html">Copier le code</button></div><pre><code>&lt;a class=&quot;button button--primary&quot; href=&quot;#recipe&quot;&gt;Voir la recette&lt;/a&gt;
+&lt;a class=&quot;button button--quiet&quot; href=&quot;#foundations&quot;&gt;Fondations&lt;/a&gt;
+&lt;a class=&quot;button button--coral button--small&quot; href=&quot;#forms&quot;&gt;Voir les champs&lt;/a&gt;</code></pre></div></details><p class="dd-source"><span>Source</span> <code>src/styles/components.css · .button</code></p></div>
+    </div>
+  </article>
+  <article class="dd-example" id="badges" aria-labelledby="badges-title">
+    <div class="dd-example__head"><span class="dd-example__number">02 / Information</span><h3 id="badges-title">Badges & statut</h3><p>Des libellés courts pour qualifier un état ou une catégorie sans voler la place au contenu.</p></div>
+    <div class="dd-example__body">
+      <div class="dd-stage"><span class="dd-stage__label">Aperçu réel</span><div class="dd-stage__inner"><div class="dd-preview-row"><span class="badge badge--success">Confirmée</span><span class="badge badge--warning">En attente</span><span class="badge badge--neutral">Brouillon</span><span class="badge badge--coral">À traiter</span><span class="dd-status"><span class="status-dot status-dot--success" aria-hidden="true"></span> Service ouvert</span></div></div></div>
+      <div class="dd-example__aside"><div class="dd-use"><strong>Quand l’utiliser</strong><p>Ne vous reposez jamais sur la couleur seule : le libellé porte l’information. Le point de statut est décoratif si le texte voisin donne déjà l’état.</p></div><details class="dd-snippet"><summary>Voir le HTML <span aria-hidden="true">↗</span></summary><div class="dd-code"><div class="dd-code__top"><span>html</span><button type="button" class="dd-code__copy" data-doc-copy aria-label="Copier le code html">Copier le code</button></div><pre><code>&lt;span class=&quot;badge badge--success&quot;&gt;Confirmée&lt;/span&gt;
+&lt;span class=&quot;badge badge--warning&quot;&gt;En attente&lt;/span&gt;
+&lt;span class=&quot;badge badge--neutral&quot;&gt;Brouillon&lt;/span&gt;
+&lt;span class=&quot;badge badge--coral&quot;&gt;À traiter&lt;/span&gt;
+&lt;span&gt;&lt;span class=&quot;status-dot status-dot--success&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt; Service ouvert&lt;/span&gt;</code></pre></div></details><p class="dd-source"><span>Source</span> <code>src/styles/components.css · .badge, .status-dot</code></p></div>
+    </div>
+  </article>
+  <article class="dd-example" id="forms" aria-labelledby="forms-title">
+    <div class="dd-example__head"><span class="dd-example__number">03 / Saisie</span><h3 id="forms-title">Champs de formulaire</h3><p>Le couple form-field + form-control assure un label visible, une largeur cohérente et un focus perceptible.</p></div>
+    <div class="dd-example__body">
+      <div class="dd-stage"><span class="dd-stage__label">Aperçu réel</span><div class="dd-stage__inner"><div class="form-stack dd-form-preview"><div class="form-field"><label class="form-field__label" for="docs-restaurant-name">Nom du restaurant</label><input class="form-control" id="docs-restaurant-name" name="name" type="text" autocomplete="organization" placeholder="Le Petit Bouchon"><span class="form-field__hint">Le nom que vos clients verront sur la carte.</span></div><div class="form-field"><label class="form-field__label" for="docs-service-note">Note de service</label><textarea class="form-control" id="docs-service-note" name="note" placeholder="Une précision utile pour l’équipe"></textarea></div></div></div></div>
+      <div class="dd-example__aside"><div class="dd-use"><strong>Quand l’utiliser</strong><p>Gardez for et id identiques. Pour soumettre, ajoutez une vraie validation et un gestionnaire d’événement ; cet aperçu n’enregistre rien.</p></div><details class="dd-snippet"><summary>Voir le HTML <span aria-hidden="true">↗</span></summary><div class="dd-code"><div class="dd-code__top"><span>html</span><button type="button" class="dd-code__copy" data-doc-copy aria-label="Copier le code html">Copier le code</button></div><pre><code>&lt;div class=&quot;form-stack&quot;&gt;
+  &lt;div class=&quot;form-field&quot;&gt;
+    &lt;label class=&quot;form-field__label&quot; for=&quot;restaurant-name&quot;&gt;Nom du restaurant&lt;/label&gt;
+    &lt;input class=&quot;form-control&quot; id=&quot;restaurant-name&quot; name=&quot;name&quot; type=&quot;text&quot;
+      autocomplete=&quot;organization&quot; placeholder=&quot;Le Petit Bouchon&quot;&gt;
+    &lt;span class=&quot;form-field__hint&quot;&gt;Le nom que vos clients verront sur la carte.&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;form-field&quot;&gt;
+    &lt;label class=&quot;form-field__label&quot; for=&quot;service-note&quot;&gt;Note de service&lt;/label&gt;
+    &lt;textarea class=&quot;form-control&quot; id=&quot;service-note&quot; name=&quot;note&quot;&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div></details><p class="dd-source"><span>Source</span> <code>src/styles/components.css · .form-stack, .form-field, .form-control</code></p></div>
+    </div>
+  </article>
+  <article class="dd-example" id="cards" aria-labelledby="cards-title">
+    <div class="dd-example__head"><span class="dd-example__number">04 / Conteneur</span><h3 id="cards-title">Carte de contenu</h3><p>La dash-card isole un groupe d’informations dans l’application. L’en-tête donne un titre et éventuellement un chemin vers le détail.</p></div>
+    <div class="dd-example__body">
+      <div class="dd-stage"><span class="dd-stage__label">Aperçu réel</span><div class="dd-stage__inner"><div class="dash-card dd-card-preview"><div class="card-header"><h3 class="card-title">Service du midi</h3><a class="card-action" href="#recipe">Voir le modèle</a></div><p>Un repère calme pour les informations à consulter rapidement.</p></div></div></div>
+      <div class="dd-example__aside"><div class="dd-use"><strong>Quand l’utiliser</strong><p>Réservez les cartes aux vrais regroupements, pas à chaque ligne d’une page. Une carte n’est pas cliquable par défaut : le lien explicite porte la navigation.</p></div><details class="dd-snippet"><summary>Voir le HTML <span aria-hidden="true">↗</span></summary><div class="dd-code"><div class="dd-code__top"><span>html</span><button type="button" class="dd-code__copy" data-doc-copy aria-label="Copier le code html">Copier le code</button></div><pre><code>&lt;section class=&quot;dash-card&quot; aria-labelledby=&quot;service-title&quot;&gt;
+  &lt;div class=&quot;card-header&quot;&gt;
+    &lt;h3 class=&quot;card-title&quot; id=&quot;service-title&quot;&gt;Service du midi&lt;/h3&gt;
+    &lt;a class=&quot;card-action&quot; href=&quot;#recipe&quot;&gt;Voir le modèle&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;p&gt;Un repère calme pour les informations à consulter rapidement.&lt;/p&gt;
+&lt;/section&gt;</code></pre></div></details><p class="dd-source"><span>Source</span> <code>src/styles/components.css · .dash-card, .card-header</code></p></div>
+    </div>
+  </article>
+  <article class="dd-example" id="headers" aria-labelledby="headers-title">
+    <div class="dd-example__head"><span class="dd-example__number">05 / Structure</span><h3 id="headers-title">En-tête de page</h3><p>Le page-header associe contexte, titre et action. Il se replie naturellement quand l’espace manque.</p></div>
+    <div class="dd-example__body">
+      <div class="dd-stage"><span class="dd-stage__label">Aperçu réel</span><div class="dd-stage__inner"><div class="page-header dd-header-preview"><div><span class="page-header__meta">Gestion / Équipe</span><h2>Votre équipe</h2></div><a class="button button--primary button--small" href="#recipe">Voir la recette</a></div></div></div>
+      <div class="dd-example__aside"><div class="dd-use"><strong>Quand l’utiliser</strong><p>À employer dans la zone de contenu app/admin. Une seule balise h1 par page ; la classe ne change pas la hiérarchie sémantique.</p></div><details class="dd-snippet"><summary>Voir le HTML <span aria-hidden="true">↗</span></summary><div class="dd-code"><div class="dd-code__top"><span>html</span><button type="button" class="dd-code__copy" data-doc-copy aria-label="Copier le code html">Copier le code</button></div><pre><code>&lt;div class=&quot;page-header&quot;&gt;
+  &lt;div&gt;
+    &lt;span class=&quot;page-header__meta&quot;&gt;Gestion / Équipe&lt;/span&gt;
+    &lt;h1&gt;Votre équipe&lt;/h1&gt;
+  &lt;/div&gt;
+  &lt;a class=&quot;button button--primary button--small&quot; href=&quot;#recipe&quot;&gt;Voir la recette&lt;/a&gt;
+&lt;/div&gt;</code></pre></div></details><p class="dd-source"><span>Source</span> <code>src/styles/components.css · .page-header</code></p></div>
+    </div>
+  </article>
+  <article class="dd-example" id="avatars" aria-labelledby="avatars-title">
+    <div class="dd-example__head"><span class="dd-example__number">06 / Identité</span><h3 id="avatars-title">Avatars initiales</h3><p>Un repère compact pour représenter une personne ou un établissement quand aucune photo n’est disponible.</p></div>
+    <div class="dd-example__body">
+      <div class="dd-stage"><span class="dd-stage__label">Aperçu réel</span><div class="dd-stage__inner"><div class="dd-preview-row"><span class="avatar avatar--sage" aria-hidden="true">ML</span><span class="avatar avatar--coral" aria-hidden="true">CB</span><span class="avatar avatar--neutral" aria-hidden="true">RN</span><span class="dd-person-label">Maëlle Laurent <small>Responsable de salle</small></span></div></div></div>
+      <div class="dd-example__aside"><div class="dd-use"><strong>Quand l’utiliser</strong><p>Les initiales doivent provenir du nom affiché. Pour une personne, donnez le nom complet en texte adjacent ; l’avatar peut alors être décoratif.</p></div><details class="dd-snippet"><summary>Voir le HTML <span aria-hidden="true">↗</span></summary><div class="dd-code"><div class="dd-code__top"><span>html</span><button type="button" class="dd-code__copy" data-doc-copy aria-label="Copier le code html">Copier le code</button></div><pre><code>&lt;div class=&quot;dd-person&quot;&gt;
+  &lt;span class=&quot;avatar avatar--sage&quot; aria-hidden=&quot;true&quot;&gt;ML&lt;/span&gt;
+  &lt;span&gt;Maëlle Laurent&lt;/span&gt;
+&lt;/div&gt;</code></pre></div></details><p class="dd-source"><span>Source</span> <code>src/styles/components.css · .avatar</code></p></div>
+    </div>
+  </article>
+  <article class="dd-example" id="tables" aria-labelledby="tables-title">
+    <div class="dd-example__head"><span class="dd-example__number">07 / Données</span><h3 id="tables-title">Table de données</h3><p>Un tableau pour comparer des valeurs alignées en lignes et colonnes. Le conteneur autorise le défilement horizontal sur petit écran.</p></div>
+    <div class="dd-example__body">
+      <div class="dd-stage"><span class="dd-stage__label">Aperçu réel</span><div class="dd-stage__inner"><div class="table-wrap"><table class="data-table"><caption class="visually-hidden">Aperçu des réservations</caption><thead><tr><th scope="col">Table</th><th scope="col">Créneau</th><th scope="col">Statut</th></tr></thead><tbody><tr><td>Terrasse 04</td><td>12 h 30</td><td><span class="badge badge--success">Confirmée</span></td></tr><tr><td>Salle 08</td><td>13 h 15</td><td><span class="badge badge--warning">En attente</span></td></tr></tbody></table></div></div></div>
+      <div class="dd-example__aside"><div class="dd-use"><strong>Quand l’utiliser</strong><p>Utilisez caption et scope pour la lecture assistée. Les lignes ne sont pas des boutons ; placez une vraie action dans la cellule si nécessaire.</p></div><details class="dd-snippet"><summary>Voir le HTML <span aria-hidden="true">↗</span></summary><div class="dd-code"><div class="dd-code__top"><span>html</span><button type="button" class="dd-code__copy" data-doc-copy aria-label="Copier le code html">Copier le code</button></div><pre><code>&lt;div class=&quot;table-wrap&quot;&gt;
+  &lt;table class=&quot;data-table&quot;&gt;
+    &lt;caption class=&quot;visually-hidden&quot;&gt;Réservations du jour&lt;/caption&gt;
+    &lt;thead&gt;&lt;tr&gt;
+      &lt;th scope=&quot;col&quot;&gt;Table&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Créneau&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Statut&lt;/th&gt;
+    &lt;/tr&gt;&lt;/thead&gt;
+    &lt;tbody&gt;&lt;tr&gt;
+      &lt;td&gt;Terrasse 04&lt;/td&gt;&lt;td&gt;12 h 30&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;badge badge--success&quot;&gt;Confirmée&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;&lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre></div></details><p class="dd-source"><span>Source</span> <code>src/styles/components.css · .table-wrap, .data-table</code></p></div>
+    </div>
+  </article>
+  <article class="dd-example" id="catalog" aria-labelledby="catalog-title">
+    <div class="dd-example__head"><span class="dd-example__number">08 / App / catalogue</span><h3 id="catalog-title">Panneau catalogue</h3><p>Une composition plus éditoriale pour les écrans de gestion de carte, avec un titre, un comptage et une liste.</p></div>
+    <div class="dd-example__body">
+      <div class="dd-stage"><span class="dd-stage__label">Aperçu réel</span><div class="dd-stage__inner"><div class="catalog-page dd-catalog-preview"><div class="catalog-panel"><div class="catalog-panel__heading"><div><span class="catalog-eyebrow">Carte / Organisation</span><h2>Catégories</h2></div><span class="catalog-count">2 catégories</span></div><ul class="catalog-rows"><li class="catalog-row"><span class="catalog-row__index" aria-hidden="true">01</span><div class="catalog-row__body"><strong>Entrées</strong><small>Avant le plat</small></div></li><li class="catalog-row"><span class="catalog-row__index" aria-hidden="true">02</span><div class="catalog-row__body"><strong>Plats</strong><small>À partager ou non</small></div></li></ul></div></div></div></div>
+      <div class="dd-example__aside"><div class="dd-use"><strong>Quand l’utiliser</strong><p>À utiliser dans les pages catalogue uniquement : les styles catalog-* sont contextualisés par .catalog-page, et non globaux.</p></div><details class="dd-snippet"><summary>Voir le HTML <span aria-hidden="true">↗</span></summary><div class="dd-code"><div class="dd-code__top"><span>html</span><button type="button" class="dd-code__copy" data-doc-copy aria-label="Copier le code html">Copier le code</button></div><pre><code>&lt;section class=&quot;catalog-page&quot;&gt;
+  &lt;div class=&quot;catalog-panel&quot;&gt;
+    &lt;div class=&quot;catalog-panel__heading&quot;&gt;
+      &lt;div&gt;&lt;span class=&quot;catalog-eyebrow&quot;&gt;Carte / Organisation&lt;/span&gt;&lt;h2&gt;Catégories&lt;/h2&gt;&lt;/div&gt;
+      &lt;span class=&quot;catalog-count&quot;&gt;2 catégories&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;ul class=&quot;catalog-rows&quot;&gt;
+      &lt;li class=&quot;catalog-row&quot;&gt;
+        &lt;span class=&quot;catalog-row__index&quot; aria-hidden=&quot;true&quot;&gt;01&lt;/span&gt;
+        &lt;div class=&quot;catalog-row__body&quot;&gt;&lt;strong&gt;Entrées&lt;/strong&gt;&lt;small&gt;Avant le plat&lt;/small&gt;&lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre></div></details><p class="dd-source"><span>Source</span> <code>src/styles/catalog-pages.css · .catalog-page, .catalog-panel</code></p></div>
+    </div>
+  </article>
+  <article class="dd-example" id="customer" aria-labelledby="customer-title">
+    <div class="dd-example__head"><span class="dd-example__number">09 / Customer</span><h3 id="customer-title">Titre de parcours client</h3><p>Un départ généreux pour le panier, la commande ou le compte dans le cadre client.</p></div>
+    <div class="dd-example__body">
+      <div class="dd-stage"><span class="dd-stage__label">Aperçu réel</span><div class="dd-stage__inner"><div class="customer-page-title dd-customer-preview"><span class="section-kicker">Votre table</span><h1>Le bon moment commence ici.</h1><p>Retrouvez vos choix et prenez le temps de savourer.</p></div></div></div>
+      <div class="dd-example__aside"><div class="dd-use"><strong>Quand l’utiliser</strong><p>À insérer dans renderCustomerLayout, qui fournit déjà le main, l’en-tête et la navigation basse. Ne dupliquez pas ces landmarks.</p></div><details class="dd-snippet"><summary>Voir le HTML <span aria-hidden="true">↗</span></summary><div class="dd-code"><div class="dd-code__top"><span>html</span><button type="button" class="dd-code__copy" data-doc-copy aria-label="Copier le code html">Copier le code</button></div><pre><code>&lt;div class=&quot;customer-page-title&quot;&gt;
+  &lt;span class=&quot;section-kicker&quot;&gt;Votre table&lt;/span&gt;
+  &lt;h1&gt;Le bon moment commence ici.&lt;/h1&gt;
+  &lt;p&gt;Retrouvez vos choix et prenez le temps de savourer.&lt;/p&gt;
+&lt;/div&gt;</code></pre></div></details><p class="dd-source"><span>Source</span> <code>src/styles/customer.css · .customer-page-title, .section-kicker</code></p></div>
+    </div>
+  </article></div>
+          </section>
+
+          <section class="dd-section dd-recipe-section" id="recipe" aria-labelledby="recipe-title">
+            <div class="dd-section__intro"><span class="dd-index">03 / Le chemin de rendu</span><h2 id="recipe-title">De l’idée à la route.</h2><p>Restauria est un moteur de pages Vite en JavaScript natif. Le fragment de page fournit le contenu ; le routeur choisit le rendu et le layout ajoute le cadre.</p></div>
+            <div class="dd-flow" aria-label="Flux de composition"><div><span>01</span><strong>Déclarer</strong><small>site-routes.js</small></div><i aria-hidden="true">→</i><div><span>02</span><strong>Rendre</strong><small>main.js</small></div><i aria-hidden="true">→</i><div><span>03</span><strong>Encadrer</strong><small>layouts.js</small></div><i aria-hidden="true">→</i><div><span>04</span><strong>Styliser</strong><small>styles/*.css</small></div></div>
+            <div class="dd-recipe-grid">
+              <div class="dd-recipe-card"><span class="dd-recipe-card__step">A / Public</span><h3>Le contenu d’abord.</h3><p>Exportez une fonction qui retourne un fragment, pas un document complet. Déclarez ensuite sa route publique et son appel explicite dans <code>renderApp()</code>, avant les replis <code>route.type</code>. Le layout fournit déjà header, main et footer.</p><div class="dd-code"><div class="dd-code__top"><span>js</span><button type="button" class="dd-code__copy" data-doc-copy aria-label="Copier le code js">Copier le code</button></div><pre><code>// src/new-page.js
+export function renderNewPage() {
+  return `&lt;section class=&quot;new-page&quot;&gt;
+    &lt;h1&gt;Une nouvelle page&lt;/h1&gt;
+    &lt;p&gt;Un message clair, un geste utile.&lt;/p&gt;
+    &lt;a class=&quot;button button--primary&quot; href=&quot;/contact&quot;&gt;Nous contacter&lt;/a&gt;
+  &lt;/section&gt;`;
+}
+
+// src/site-routes.js : ajouter à siteRoutes :
+// { path: &#39;/nouvelle-page&#39;, layout: &#39;public&#39;, title: &#39;Nouvelle page&#39;,
+//   desc: &#39;Description de la nouvelle page.&#39; }
+// src/main.js : importer renderNewPage ; dans renderApp(), avant route.type :
+// else if (path === &#39;/nouvelle-page&#39;) content = renderNewPage();
+// scripts/export-static-template.mjs : importer renderNewPage ;
+// dans contentFor(route), avant les replis route.type :
+// if (path === &#39;/nouvelle-page&#39;) return renderNewPage();
+// La branche route.layout === &#39;public&#39; applique renderPublicLayout(content, t, path, profile).</code></pre></div></div>
+              <div class="dd-recipe-card"><span class="dd-recipe-card__step">B / App & customer</span><h3>Choisir le bon cadre.</h3><p>Une route <code>app</code> passe par <code>renderAppLayout</code> (sidebar + topbar). Une route <code>customer</code> passe par <code>renderCustomerLayout</code> (en-tête restaurant + navigation basse). La route doit fournir le bon <code>layout</code> et son contenu doit rester un fragment.</p><div class="dd-code"><div class="dd-code__top"><span>js</span><button type="button" class="dd-code__copy" data-doc-copy aria-label="Copier le code js">Copier le code</button></div><pre><code>// Dans renderApp(), une branche spécifique au chemin de la nouvelle page :
+// else if (path === &#39;/app/nouvelle-page&#39;) content = renderNewAppPage(profile);
+
+// Ensuite main.js sélectionne le cadre via route.layout :
+// &#39;app&#39;      → renderAppLayout(content, path, profile)
+// &#39;customer&#39; → renderCustomerLayout(content, path, profile)
+// &#39;public&#39;   → renderPublicLayout(content, t, path, profile)
+
+// Ne créez pas de second &lt;main&gt; dans le fragment de page.</code></pre></div></div>
+            </div>
+            <div class="dd-recipe-note"><strong>Ne manquez pas la version téléchargeable</strong><p>Une nouvelle page doit aussi être rendue dans <code>scripts/export-static-template.mjs</code> : son <code>contentFor(route)</code> est distinct du rendu navigateur. Importez sa feuille CSS dans <code>src/styles/main.css</code>, puis exécutez <code>pnpm --filter @workspace/restauria run export:template</code> et régénérez le ZIP. Si le HTML contient des valeurs saisies par les utilisateurs, échappez-les avant interpolation.</p></div>
+          </section>
+
+          <section class="dd-section dd-principles" id="principles" aria-labelledby="principles-title"><div class="dd-section__intro"><span class="dd-index">04 / Avant de publier</span><h2 id="principles-title">Les détails qui comptent.</h2></div><div class="dd-checklist"><div><span>01</span><strong>Une structure lisible</strong><p>Un h1, des sections nommées, des labels liés aux champs et des tables avec en-têtes.</p></div><div><span>02</span><strong>De vraies interactions</strong><p>Les snippets décrivent l’apparence. La validation, la persistance, les états de chargement et les erreurs exigent du JavaScript.</p></div><div><span>03</span><strong>Un test dans chaque cadre</strong><p>Vérifiez la page sur mobile, clavier et écran large, avec les profils concernés et les états vides.</p></div></div><p class="dd-endnote">La bonne pièce au bon endroit. Puis la liberté de composer.</p></section>
+        </div>
+      </div>
+    </div>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a class="brand-mark" href="/" aria-label="Restauria, accueil">
+            <span class="brand-mark__symbol" aria-hidden="true" style="background: #fff; color: var(--color-forest);">R</span>
+            <span class="brand-mark__name" style="color: #fff;">Restauria</span>
+          </a>
+          <p>Explorez la carte, choisissez votre façon de commander et savourez le moment.</p>
+        </div>
+        <div class="footer-nav">
+          <div class="footer-col">
+            <h4>Produit</h4>
+            <a href="/restaurants">Restaurants</a>
+            <a href="/features">Découvrir</a>
+            <a href="/pricing">Coût côté client</a>
+            <a href="/restaurant">Espace restaurateur</a>
+            <a href="/pages">Route Directory</a>
+            <a href="/design-docs">Documentation design</a>
+          </div>
+          <div class="footer-col">
+            <h4>Support</h4>
+            <a href="/contact">Contact</a>
+            <a href="/terms">Conditions (client)</a>
+            <a href="/privacy">Confidentialité (client)</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© Restauria.</span>
+        <span>Une expérience pensée pour le plaisir de la table.</span>
+      </div>
+    </footer>
+
+<!-- Shared client script keeps navigation and cart controls interactive. -->
+<script type="module" src="/assets/main-D90o_S-p.js"></script>
+</body>
+</html>

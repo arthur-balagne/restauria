@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="fr" data-page="components">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Restauria component catalogue — accessible, reusable HTML patterns."
+    />
+    <meta name="theme-color" content="#f8f7f4" />
+    <title>Restauria — Components</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+    <script type="module" crossorigin src="/assets/main-D90o_S-p.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+    <div class="app-frame">
+      <aside class="sidebar" id="primary-sidebar" aria-label="Navigation principale">
+        <div class="sidebar__brand">
+          <a class="brand-mark" href="/" aria-label="Restauria, accueil">
+            <span class="brand-mark__symbol" aria-hidden="true">R</span>
+            <span class="brand-mark__name">Restauria</span>
+          </a>
+          <span class="brand-mark__tagline">UI template</span>
+        </div>
+        <nav class="sidebar__nav" aria-label="Sections du template">
+          <p class="sidebar__label">Workspace</p>
+          <a class="nav-link" href="/" data-nav-link="overview">
+            <span class="nav-link__icon icon icon-spark" aria-hidden="true"></span>
+            <span>Overview</span>
+          </a>
+          <a class="nav-link is-active" href="/components.html" data-nav-link="components">
+            <span class="nav-link__icon icon icon-grid" aria-hidden="true"></span>
+            <span>Components</span>
+            <span class="nav-link__count">12</span>
+          </a>
+          <p class="sidebar__label sidebar__label--spaced">Reference</p>
+          <a class="nav-link" href="/#foundations">
+            <span class="nav-link__icon icon icon-layers" aria-hidden="true"></span>
+            <span>Foundations</span>
+          </a>
+          <a class="nav-link" href="/#accessibility">
+            <span class="nav-link__icon icon icon-check" aria-hidden="true"></span>
+            <span>Accessibility</span>
+          </a>
+        </nav>
+        <div class="sidebar__footer">
+          <div class="sidebar__version">
+            <span class="status-dot status-dot--success" aria-hidden="true"></span>
+            <span>Ready for user stories</span>
+          </div>
+          <p>HTML · CSS · Vanilla JS</p>
+        </div>
+      </aside>
+
+      <div class="app-content">
+        <header class="topbar">
+          <button class="icon-button topbar__menu" type="button" aria-controls="primary-sidebar" aria-expanded="false" data-menu-toggle>
+            <span class="icon icon-menu" aria-hidden="true"></span>
+            <span class="visually-hidden">Ouvrir le menu</span>
+          </button>
+          <div class="breadcrumbs" aria-label="Fil d’Ariane">
+            <span class="breadcrumbs__root">Restauria</span>
+            <span class="breadcrumbs__separator" aria-hidden="true">/</span>
+            <span class="breadcrumbs__current">Components</span>
+          </div>
+          <div class="topbar__actions">
+            <label class="language-picker">
+              <span class="icon icon-globe" aria-hidden="true"></span>
+              <span class="visually-hidden">Langue</span>
+              <select data-language-select aria-label="Choisir la langue">
+                <option value="fr">FR</option>
+                <option value="en">EN</option>
+                <option value="es">ES</option>
+              </select>
+            </label>
+            <button class="avatar-button" type="button" aria-label="Ouvrir le profil de démonstration">
+              <span>AB</span>
+            </button>
+          </div>
+        </header>
+
+        <main id="main-content" class="main-content">
+          <section class="catalog-hero reveal-on-load" aria-labelledby="catalog-title">
+            <div>
+              <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span> UI reference</p>
+              <h1 id="catalog-title">Components that keep the product coherent.</h1>
+              <p class="catalog-hero__lead">A living reference page for the reusable building blocks of Restauria.</p>
+            </div>
+            <div class="catalog-hero__stats" aria-label="Résumé du catalogue">
+              <strong data-component-count>12</strong>
+              <span>patterns<br />ready to use</span>
+            </div>
+          </section>
+
+          <div class="catalog-toolbar" role="toolbar" aria-label="Filtres du catalogue">
+            <div class="catalog-filters" role="tablist" aria-label="Filtrer par catégorie">
+              <button class="filter-chip is-active" type="button" role="tab" aria-selected="true" data-filter="all">All components</button>
+              <button class="filter-chip" type="button" role="tab" aria-selected="false" data-filter="navigation">Navigation</button>
+              <button class="filter-chip" type="button" role="tab" aria-selected="false" data-filter="content">Content</button>
+              <button class="filter-chip" type="button" role="tab" aria-selected="false" data-filter="feedback">Feedback</button>
+              <button class="filter-chip" type="button" role="tab" aria-selected="false" data-filter="forms">Forms</button>
+            </div>
+            <p class="catalog-toolbar__hint"><span class="icon icon-command" aria-hidden="true"></span> Interactive examples</p>
+          </div>
+
+          <section class="component-catalog" aria-labelledby="catalog-list-title">
+            <h2 id="catalog-list-title" class="visually-hidden">Liste des composants</h2>
+            <div class="catalog-grid" data-component-catalog></div>
+            <div class="catalog-empty" data-catalog-empty hidden>
+              <span class="icon icon-search" aria-hidden="true"></span>
+              <h3>No components in this category yet</h3>
+              <p>Choose another category to keep exploring the foundation.</p>
+            </div>
+          </section>
+
+          <section class="section-block section-block--callout catalog-accessibility" id="accessibility" aria-labelledby="accessibility-title">
+            <div class="callout-icon"><span class="icon icon-check" aria-hidden="true"></span></div>
+            <div>
+              <p class="eyebrow">Component contract</p>
+              <h2 id="accessibility-title">Every pattern has a clear starting point.</h2>
+              <p>Use the markup as a base, keep labels explicit, preserve focus states and extend the data attributes when a story needs new behavior.</p>
+            </div>
+          </section>
+        </main>
+
+        <footer class="site-footer">
+          <span>Restauria UI template</span>
+          <span>Component catalogue</span>
+        </footer>
+      </div>
+    </div>
+    <div class="toast-region" role="status" aria-live="polite" aria-atomic="true" data-toast-region></div>
+  </body>
+</html>
