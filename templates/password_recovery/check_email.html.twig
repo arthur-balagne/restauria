@@ -1,0 +1,19 @@
+{% extends 'auth/layout.html.twig' %}
+
+{% block meta_description %}Vérifiez votre boîte email{{ audience.restaurant ? ' · restaurateur' }} — un lien de réinitialisation a été envoyé si un compte existe.{% endblock %}
+
+{% block page_title %}Vérifiez votre email{{ audience.restaurant ? ' · restaurateur' }}{% endblock %}
+
+{% block heading %}Vérifiez votre boîte email{% endblock %}
+
+{% block lead %}Nous avons envoyé les instructions de réinitialisation à votre adresse email si un compte {{ audience.restaurant ? 'restaurateur' : 'client' }} existe.{% endblock %}
+
+{% block auth_body %}
+    <div class="auth-info">
+        <p>Ouvrez votre boîte de réception et cliquez sur le lien pour choisir un nouveau mot de passe. Le lien est valable pendant une heure.</p>
+        <p>Vous n’avez rien reçu ? Vérifiez votre dossier spam ou <a href="{{ path(audience.routeName('app_forgot_password')) }}">réessayez avec une autre adresse</a>.</p>
+        <a class="button button--primary" href="{{ path(audience.routeName('app_login')) }}">Retour à la connexion</a>
+    </div>
+{% endblock %}
+
+{% block footer_links %}{{ include('auth/_back_to_login_link.html.twig') }}{% endblock %}

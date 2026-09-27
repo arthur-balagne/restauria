@@ -1,0 +1,18 @@
+{% extends 'auth/layout.html.twig' %}
+
+{% block meta_description %}Mot de passe mis à jour{{ audience.restaurant ? ' · restaurateur' }} — connectez-vous avec vos nouveaux identifiants.{% endblock %}
+
+{% block page_title %}Mot de passe mis à jour{{ audience.restaurant ? ' · restaurateur' }}{% endblock %}
+
+{% block heading %}Mot de passe mis à jour{% endblock %}
+
+{% block lead %}Votre mot de passe {{ audience.restaurant ? 'restaurateur' : 'client' }} a bien été modifié.{% endblock %}
+
+{% block auth_body %}
+    <div class="auth-info">
+        <p>Vous pouvez maintenant vous connecter avec votre nouveau mot de passe.</p>
+        <a class="button button--primary" href="{{ path(audience.routeName('app_login')) }}">Se connecter</a>
+    </div>
+{% endblock %}
+
+{% block footer_links %}{{ include('auth/_back_to_login_link.html.twig') }}{% endblock %}

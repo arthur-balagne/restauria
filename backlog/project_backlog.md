@@ -6,7 +6,6 @@ These stories describe the pages and interactions in the current template. Order
 
 - **TPL-001 — Customer home (/):** As a visitor, I want to understand the customer ordering journey and enter a restaurant demo from the home page.
 - **TPL-002 — Customer features (/features):** As a visitor, I want to see how the template presents menus, ordering, and order follow-up before exploring a restaurant.
-- **TPL-003 — Customer pricing (/pricing):** As a visitor, I want to see what the customer-facing prototype says about costs and payment without mistaking it for a live checkout.
 - **TPL-004 — Restaurant directory (/restaurants):** As a customer, I want to browse the available demo restaurants and open the menu for one that interests me.
 - **TPL-005 — Directory filters (/restaurants):** As a customer, I want to narrow demo restaurants by department and cuisine and see the matching results immediately.
 - **TPL-006 — Empty directory results (/restaurants):** As a customer, I want to clear my filters when no demo restaurant matches.

@@ -5,7 +5,7 @@ EXEC_DB        = $(DOCKER_COMPOSE) exec database
 # Support passing arguments to make sf and make composer (e.g. `make sf cache:clear` or `make composer require symfony/lock`)
 ARGS = $(filter-out $@,$(MAKECMDGOALS))
 
-.PHONY: up down restart logs bash composer sf db migration fixtures test cs cs-fix phpstan lint qa cache-clear help
+.PHONY: up down restart logs bash composer sf db migration fixtures test-db test cs cs-fix phpstan lint qa cache-clear consumer consumer-restart help
 
 .DEFAULT_GOAL := help
 
@@ -21,6 +21,7 @@ help:
 	@echo "  make db          Access MariaDB database inside database container"
 	@echo "  make migration   Run Doctrine migrations"
 	@echo "  make fixtures    Load Doctrine fixtures"
+	@echo "  make test-db     Create and migrate the test database, then load fixtures"
 	@echo "  make test        Run tests using PHPUnit"
 	@echo "  make cs          Check coding style using PHP-CS-Fixer"
 	@echo "  make cs-fix      Fix coding style using PHP-CS-Fixer"
@@ -28,6 +29,8 @@ help:
 	@echo "  make lint        Lint Twig templates, YAML config and the container"
 	@echo "  make qa          Run all quality checks (cs, phpstan, lint, test)"
 	@echo "  make cache-clear Clear Symfony cache"
+	@echo "  make consumer    Run the Messenger consumer (async transport)"
+	@echo "  make consumer-restart Signal running Messenger consumers to stop so the supervisor restarts them"
 
 up:
 	$(DOCKER_COMPOSE) up -d
@@ -59,6 +62,11 @@ migration:
 fixtures:
 	$(EXEC_PHP) bin/console doctrine:fixtures:load --no-interaction
 
+test-db:
+	$(EXEC_DB) sh -c 'mariadb -uroot -p"$$MARIADB_ROOT_PASSWORD" -e "CREATE DATABASE IF NOT EXISTS restauria_test CHARACTER SET utf8mb4; GRANT ALL ON restauria_test.* TO '"'"'app'"'"'@'"'"'%'"'"';"'
+	$(EXEC_PHP) bin/console doctrine:migrations:migrate --env=test --no-interaction
+	$(EXEC_PHP) bin/console doctrine:fixtures:load --env=test --no-interaction
+
 test:
 	$(EXEC_PHP) bin/phpunit
 
@@ -81,5 +89,8 @@ qa: cs phpstan lint test
 cache-clear:
 	$(EXEC_PHP) bin/console cache:clear
 
-%:
-	@:
+consumer:
+	$(EXEC_PHP) bin/console messenger:consume async -vv
+
+consumer-restart:
+	$(EXEC_PHP) bin/console messenger:stop-workers

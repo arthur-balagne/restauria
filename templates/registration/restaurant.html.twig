@@ -1,0 +1,31 @@
+{% extends 'auth/layout.html.twig' %}
+
+{% block meta_description %}Créez votre compte restaurateur Restauria pour piloter votre établissement.{% endblock %}
+
+{% block page_title %}Créer un compte restaurateur{% endblock %}
+
+{% block heading %}Créer un compte restaurateur{% endblock %}
+
+{% block lead %}Créez votre espace pour piloter votre restaurant.{% endblock %}
+
+{% block auth_body %}
+    <form class="form-stack auth-form" method="post" action="{{ path('app_register_restaurant') }}" data-controller="registration-draft" data-registration-draft-max-cuisines-value="{{ max_cuisines }}">
+        <label class="form-field">
+            <span class="form-field__label">Nom du restaurant</span>
+            <input type="text" name="name" value="{{ form_data.name }}" placeholder="Saisissez nom du restaurant..." class="form-control" autocomplete="organization" required>
+        </label>
+        <label class="form-field">
+            <span class="form-field__label">Email</span>
+            <input type="email" name="email" value="{{ form_data.email }}" placeholder="Saisissez email..." class="form-control" autocomplete="email" required>
+        </label>
+        {{ include('auth/_password_field.html.twig', {autocomplete: 'new-password'}) }}
+        {{ include('auth/_field.html.twig', {label: 'Adresse du restaurant', name: 'address', autocomplete: 'street-address', maxlength: 240, placeholder: 'Numéro, rue, code postal et ville'}) }}
+        {{ include('registration/_cuisine_selection.html.twig') }}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('register') }}">
+        {{ include('auth/_demo_form_footer.html.twig', {submit_label: 'Créer mon compte', error: error}) }}
+    </form>
+{% endblock %}
+
+{% block footer_links %}
+    <p>Déjà un compte ? <a href="{{ path(audience.routeName('app_login')) }}">Se connecter</a></p>
+{% endblock %}
