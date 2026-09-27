@@ -106,3 +106,9 @@ things up in the project instead of relying on memory:
 - Read the installed source and docblocks under `vendor/`.
 - Docs: https://symfony.com/doc/current/ (switch to the version matching
   `composer.json` if it differs).
+
+## Project rules
+
+Restauria-specific rules (testing of user stories, smoke tests for new pages,
+no unnecessary comments, PHPStan level 2, Twig linting, `composer qa`) live in
+`.junie/guidelines.md`. Read and apply them for every task.

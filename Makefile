@@ -5,7 +5,7 @@ EXEC_DB        = $(DOCKER_COMPOSE) exec database
 # Support passing arguments to make sf and make composer (e.g. `make sf cache:clear` or `make composer require symfony/lock`)
 ARGS = $(filter-out $@,$(MAKECMDGOALS))
 
-.PHONY: up down restart logs bash composer sf db migration fixtures test cs cache-clear help
+.PHONY: up down restart logs bash composer sf db migration fixtures test cs cs-fix phpstan lint qa cache-clear help
 
 .DEFAULT_GOAL := help
 
@@ -22,7 +22,11 @@ help:
 	@echo "  make migration   Run Doctrine migrations"
 	@echo "  make fixtures    Load Doctrine fixtures"
 	@echo "  make test        Run tests using PHPUnit"
-	@echo "  make cs          Fix coding style using PHP-CS-Fixer"
+	@echo "  make cs          Check coding style using PHP-CS-Fixer"
+	@echo "  make cs-fix      Fix coding style using PHP-CS-Fixer"
+	@echo "  make phpstan     Run PHPStan static analysis"
+	@echo "  make lint        Lint Twig templates, YAML config and the container"
+	@echo "  make qa          Run all quality checks (cs, phpstan, lint, test)"
 	@echo "  make cache-clear Clear Symfony cache"
 
 up:
@@ -59,7 +63,20 @@ test:
 	$(EXEC_PHP) bin/phpunit
 
 cs:
+	$(EXEC_PHP) vendor/bin/php-cs-fixer fix --dry-run --diff
+
+cs-fix:
 	$(EXEC_PHP) vendor/bin/php-cs-fixer fix
+
+phpstan:
+	$(EXEC_PHP) vendor/bin/phpstan analyse --memory-limit=512M
+
+lint:
+	$(EXEC_PHP) bin/console lint:twig templates/
+	$(EXEC_PHP) bin/console lint:yaml config/
+	$(EXEC_PHP) bin/console lint:container
+
+qa: cs phpstan lint test
 
 cache-clear:
 	$(EXEC_PHP) bin/console cache:clear
